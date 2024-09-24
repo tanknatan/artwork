@@ -7,5 +7,4 @@ sealed class Destinations(val route: String) {
     data object UnderageScreen : Destinations("delete_this_app_screen")
     data object MainScreen : Destinations("main_screen")
 
-
 }
