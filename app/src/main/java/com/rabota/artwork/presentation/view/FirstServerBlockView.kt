@@ -51,7 +51,7 @@ fun ServerBlockView(
             Row {
                 Box(
                     modifier = Modifier
-                        .size(120.dp, 40.dp)
+                        .size(120.dp, 30.dp)
                         .background(Color(0xFF101A28), RoundedCornerShape(10.dp)),
                     contentAlignment = Alignment.Center
                 ) {
