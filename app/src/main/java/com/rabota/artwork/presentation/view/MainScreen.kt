@@ -2,7 +2,6 @@ package com.rabota.artwork.presentation.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,17 +25,22 @@ import com.rabota.artwork.domain.ProductInfo
 
 @Composable
 fun MainScreen(products: List<ProductInfo>) {
+
+    val gradient = Brush.verticalGradient(
+        colors = listOf(Color(0xFF2B74E2), Color(0xFF0049B6)) // черный и фиолетовый цвет
+    )
     if (products.isEmpty()) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(gradient), contentAlignment = Alignment.Center
+        ) {
             CircularProgressIndicator(
-                color = Color(0xFF2B74E2),
+                color = Color.White,
             )
         }
     }
     else {
-        val gradient = Brush.verticalGradient(
-                colors = listOf(Color(0xFF2B74E2), Color(0xFF0049B6)) // черный и фиолетовый цвет
-                )
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -48,8 +52,16 @@ fun MainScreen(products: List<ProductInfo>) {
             ) {
                 // Добавляем элементы вне списка
                 item {
-                    Text(text = "Заголовок 1", color = Color.White, modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
-                    Text(text = "Описание заголовка", color = Color.Cyan, modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
+                    Text(
+                        text = "Заголовок 1",
+                        color = Color.White,
+                        modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                    )
+                    Text(
+                        text = "Описание заголовка",
+                        color = Color.Cyan,
+                        modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                    )
                     Row(
                         verticalAlignment = Alignment.CenterVertically, // Центрируем элементы по вертикали
                         modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
@@ -122,8 +134,8 @@ fun MainScreen(products: List<ProductInfo>) {
                             link = item.link.orEmpty(),
                             textbutton = item.textbutton.orEmpty()
                         )
-                        Text(text = "Text14", color = Color.White, modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
-                    } else {
+                    }
+                    else {
                         ServerBlockView2(
                             icon = item.icon.orEmpty(),
                             rating = item.rating.orEmpty(),
@@ -136,21 +148,56 @@ fun MainScreen(products: List<ProductInfo>) {
                             text11 = item.text11.orEmpty(),
                             text12 = item.text12.orEmpty(),
                             link = item.link13.orEmpty(),
-                            linkTextButton = item.linkTextButton.orEmpty(),
-                            text14 = item.text14.orEmpty()
+                            linkTextButton = item.linkTextButton.orEmpty()
                         )
-                        Text(text = "Text14", color = Color.White, modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
+                        Text(
+                            text = item.text14.orEmpty(),
+                            color = Color.White,
+                            modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                        )
                     }
                 }
                 item {
-                    Text(text = "Description", color = Color.White, modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
-                    Text(text = "Description", color = Color.White, modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
-                    Text(text = "Description", color = Color.White, modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
-                    Text(text = "Description", color = Color.White, modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
-                    Text(text = "Description", color = Color.White, modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
-                    Text(text = "Link1", color = Color.White, modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
-                    Text(text = "Link2", color = Color.White, modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
-                    Text(text = "Link3", color = Color.White, modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp))
+                    Text(
+                        text = "Description",
+                        color = Color.White,
+                        modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                    )
+                    Text(
+                        text = "Description",
+                        color = Color.White,
+                        modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                    )
+                    Text(
+                        text = "Description",
+                        color = Color.White,
+                        modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                    )
+                    Text(
+                        text = "Description",
+                        color = Color.White,
+                        modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                    )
+                    Text(
+                        text = "Description",
+                        color = Color.White,
+                        modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                    )
+                    Text(
+                        text = "Link1",
+                        color = Color.White,
+                        modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                    )
+                    Text(
+                        text = "Link2",
+                        color = Color.White,
+                        modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                    )
+                    Text(
+                        text = "Link3",
+                        color = Color.White,
+                        modifier = Modifier.padding(vertical = 8.dp, horizontal = 16.dp)
+                    )
                 }
             }
         }

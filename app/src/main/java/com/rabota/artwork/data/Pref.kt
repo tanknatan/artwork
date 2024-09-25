@@ -12,20 +12,17 @@ class PrefsImpl @Inject constructor(@ApplicationContext context: Context): Prefs
 
     companion object {
         private const val KEY_START_STEP_COMPLETED = "StartStepCompleted"
+        private const val KEY_EIGHTEEN_OVER = "EighteenOver"
     }
 
 
     override var startStepCompleted: Boolean
         get() = prefs.getBoolean(KEY_START_STEP_COMPLETED, false)
-        set(value) {
-            prefs.edit().putBoolean(KEY_START_STEP_COMPLETED, value).apply()
-        }
+        set(value) { prefs.edit().putBoolean(KEY_START_STEP_COMPLETED, value).apply() }
 
     override var eighteenOver : Boolean
-        get() = prefs.getBoolean("EighteenOver", false)
-        set(value) {
-            prefs.edit().putBoolean("EighteenOver", value).apply()
-        }
+        get() = prefs.getBoolean(KEY_EIGHTEEN_OVER, false)
+        set(value) { prefs.edit().putBoolean(KEY_EIGHTEEN_OVER, value).apply() }
 
 
 }

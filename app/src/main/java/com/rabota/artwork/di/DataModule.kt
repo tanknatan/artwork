@@ -25,6 +25,10 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class DataModule {
 
+    companion object {
+        private const val API_URL = "https://blazze.xyz/"
+    }
+
     @Provides
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
@@ -36,7 +40,7 @@ class DataModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://blazze.xyz/")
+            .baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

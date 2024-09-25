@@ -1,19 +1,20 @@
 package com.rabota.artwork.presentation.view
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.TextButton
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -143,9 +144,9 @@ fun ServerBlockView2(
     text11: String,
     text12: String,
     link: String,
-    linkTextButton: String,
-    text14: String
+    linkTextButton: String
 ) {
+    val context = LocalContext.current
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -171,21 +172,23 @@ fun ServerBlockView2(
                 text = rating,
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color.White
+                color = Color.White,
+                textAlign = TextAlign.Center
             )
             Text(
                 text = text1,
                 fontSize = 16.sp,
-                color = Color.White
+                color = Color.White,
+                textAlign = TextAlign.Center
             )
 
             Spacer(modifier = Modifier.height(8.dp))
 
             // Тексты 2, 3, 4, 5
-            if (text2.isNotEmpty()) Text(text = text2, color = Color.White, fontSize = 14.sp)
-            if (text3.isNotEmpty()) Text(text = text3, color = Color.White, fontSize = 14.sp)
-            if (!text4.isNullOrEmpty()) Text(text = text4, color = Color.White, fontSize = 14.sp)
-            if (!text5.isNullOrEmpty()) Text(text = text5, color = Color.White, fontSize = 14.sp)
+            if (text2.isNotEmpty()) Text(text = text2, color = Color.White, fontSize = 14.sp, textAlign = TextAlign.Center)
+            if (text3.isNotEmpty()) Text(text = text3, color = Color.White, fontSize = 14.sp, textAlign = TextAlign.Center)
+            if (!text4.isNullOrEmpty()) Text(text = text4, color = Color.White, fontSize = 14.sp, textAlign = TextAlign.Center)
+            if (!text5.isNullOrEmpty()) Text(text = text5, color = Color.White, fontSize = 14.sp, textAlign = TextAlign.Center)
         }
 
         Spacer(modifier = Modifier.width(16.dp))
@@ -195,28 +198,19 @@ fun ServerBlockView2(
             modifier = Modifier
                 .weight(2f)
                 .background(Color.White, RoundedCornerShape(10.dp)) // Добавляем белый фон
-                .padding(16.dp)
         ) {
             // Надпись ADS в верхнем правом углу
-            Text(
-                text = "ADS",
-                color = Color.Gray,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier
-                    .align(Alignment.TopEnd) // Размещаем надпись в правом верхнем углу
-                    .padding(8.dp)
-            )
-
-            // Контент внутри правой колонки
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp)
+                    .padding(top = 8.dp)
             ) {
                 Text(
                     text = text10,
                     fontSize = 16.sp,
-                    color = Color(0xFF66FF66),
+                    color = Color.Black,
                     textAlign = TextAlign.Center
                 )
                 Text(
@@ -237,7 +231,10 @@ fun ServerBlockView2(
 
                 // Кнопка
                 TextButton(
-                    onClick = { /* Handle the link, e.g., open URL */ },
+                    onClick = { /* Handle the link, e.g., open URL */
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                        context.startActivity(intent)
+                    },
                     modifier = Modifier
                         .background(
                             brush = Brush.horizontalGradient(
@@ -249,10 +246,35 @@ fun ServerBlockView2(
                 ) {
                     Text(
                         text = linkTextButton,
-                        color = Color.White
+                        color = Color.White,
                     )
                 }
             }
+            Box(
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .background(
+                        brush = Brush.horizontalGradient(
+                            colors = listOf(Color(0xFF1B88E9), Color(0xFF2FD1EC))
+                        ),
+                        shape = RoundedCornerShape(10.dp)
+                    )
+                    .padding(horizontal = 2.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "ADS",
+                    color = Color.White,
+                    fontSize = 12.sp,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .padding(horizontal = 2.dp)
+
+                )
+            }
+
+            // Контент внутри правой колонки
+
         }
     }
 }
@@ -274,7 +296,6 @@ fun ServerBlockView2Preview() {
         text11 = "Тест11",
         text12 = "Тест12",
         link = "",
-        linkTextButton = "link13",
-        text14 = "Тестовое описание"
+        linkTextButton = "link13"
     )
 }

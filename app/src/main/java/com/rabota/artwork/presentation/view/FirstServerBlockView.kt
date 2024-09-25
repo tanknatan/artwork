@@ -1,18 +1,19 @@
 package com.rabota.artwork.presentation.view
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.TextButton
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -36,6 +37,7 @@ fun ServerBlockView(
     link: String,
     textbutton: String
 ) {
+    val context = LocalContext.current
     if (newblock) {
         Column(
             modifier = Modifier
@@ -139,7 +141,10 @@ fun ServerBlockView(
 
             // Кнопка с градиентом
             TextButton(
-                onClick = { /* Handle the link, e.g., open URL */ },
+                onClick = { /* Handle the link, e.g., open URL */
+                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+                    context.startActivity(intent)
+                },
                 modifier = Modifier
                     .background(
                         brush = Brush.horizontalGradient(

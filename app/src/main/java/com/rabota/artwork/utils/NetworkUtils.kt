@@ -1,6 +1,5 @@
 package com.rabota.artwork.utils
 
-import com.rabota.artwork.utils.LogUtils.log
 import okio.IOException
 import retrofit2.Response
 
@@ -19,7 +18,7 @@ object NetworkUtils {
         return try {
             Result.success(mapper(apiCall().body() ?: throw IOException()))
         } catch (e: Exception) {
-            LogUtils.log(e)
+            log(e)
             Result.failure(e)
         }
     }

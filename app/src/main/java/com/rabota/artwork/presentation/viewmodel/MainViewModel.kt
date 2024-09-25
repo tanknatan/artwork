@@ -20,9 +20,7 @@ class MainViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            repository.getProducts().onSuccess {
-                _products.value = it
-            }
+            repository.getProducts().onSuccess { _products.value = it }
         }
     }
 
