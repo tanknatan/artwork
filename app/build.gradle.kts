@@ -8,11 +8,11 @@ plugins {
 
 
 android {
-    namespace = "com.rabota.artwork"
+    namespace = "com.seveng.oneapps"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.rabota.artwork"
+        applicationId = "com.seveng.oneapps"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
