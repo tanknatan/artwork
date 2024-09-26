@@ -98,7 +98,7 @@ fun NavigationScreen(
             val encodedUrl = backStackEntry.arguments?.getString("url")
             val url = encodedUrl?.let { Uri.decode(it) }  // Декодируем URL перед передачей
             if (url != null) {
-                WebViewScreen("https://www.google.com")  // Передаем URL в функцию экрана
+                WebViewScreen(url)  // Передаем URL в функцию экрана
             }
         }
 

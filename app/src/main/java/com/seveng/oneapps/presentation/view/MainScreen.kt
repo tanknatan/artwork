@@ -218,6 +218,7 @@ fun MainScreen(products: List<ProductInfo>, navController: NavHostController) {
 }
 
 fun openWebView(navController: NavHostController, url: String) {
+    if (url.isBlank()) return
     val encodedUrl = Uri.encode(url)
     navController.navigate("${Destinations.WebViewScreen.route}/$encodedUrl") {
         popUpTo(Destinations.MainScreen.route) {

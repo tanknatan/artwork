@@ -20,13 +20,19 @@ import androidx.compose.ui.viewinterop.AndroidView
 @Composable
 fun WebViewScreen(url: String) {
     Box {
-
         AndroidView(
             factory = { context ->
                 WebView(context).apply {
                     webViewClient =
                         WebViewClient() // Открываем ссылки внутри WebView, а не в браузере
-
+                    settings.apply {
+                        javaScriptEnabled = true
+                        domStorageEnabled = true
+                        setSupportMultipleWindows(true)
+                        setSupportZoom(true)
+                        useWideViewPort = true
+                        loadWithOverviewMode = true
+                    }
                     loadUrl(url) // Загружаем указанный URL
                 }
             },

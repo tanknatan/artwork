@@ -26,7 +26,7 @@ import javax.inject.Singleton
 class DataModule {
 
     companion object {
-        private const val API_URL = "https://tigr.me/"
+        private const val API_URL = "https://blazehair.xyz/"
     }
 
     @Provides

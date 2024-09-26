@@ -16,9 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun UnderageScreen(
-
-) {
+fun UnderageScreen() {
     val activity = LocalContext.current as? Activity
     val gradient = Brush.verticalGradient(
         colors = listOf(Color.Black, Color(0xFF8A2BE2)) // черный и фиолетовый цвет
